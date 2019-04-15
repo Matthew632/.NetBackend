@@ -13,11 +13,19 @@ namespace MattFinalProject.Controllers
     public class ImagesController : Controller
     {
         [HttpGet("restaurant/{id}")]
-        public ActionResult<Image> Get(int id)
+        public ActionResult<ImageSummary> Get(int id)
         {
             var imageRepo = new ImageRepo();
-            return new Image { Id = 1, UrlPath = "vf"};
+            return imageRepo.GetImage(id);
                 
+        }
+
+        [HttpPost("restaurant")]
+        public ActionResult<Image> Post([FromBody]PostImage postImage)
+        {
+            var imageRepo = new ImageRepo();
+            return imageRepo.PostImage(postImage);
+                           
         }
     }
 }

@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace MattFinalProject.Models
 {
-    public class Image
+    public class ImageSummary
     {
-        public int Id { get; set; }
-        public String UrlPath { get; set; }
-        public int ResId { get; set; }
+        public string UrlPath { get; set; }
     }
 }
