@@ -12,7 +12,7 @@ namespace MattFinalProject.Repos
         public ImageRepo()
         {
             // here I can put code I want to run every time a new instance is created, could declare variables
-            // and it can take arguements that I use to use
+            // and it can take arguements that I use
         }
 
         public ImageRepo(int i)
@@ -45,7 +45,7 @@ namespace MattFinalProject.Repos
                 using (var cmd = new NpgsqlCommand($"INSERT INTO images (image_path,restaurant_id) VALUES (@path,@id)", con))
                 {
                     cmd.Parameters.AddWithValue("path", postImage.UrlPath);
-                    cmd.Parameters.AddWithValue("path", postImage.ResId);
+                    cmd.Parameters.AddWithValue("id", postImage.ResId);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -53,3 +53,4 @@ namespace MattFinalProject.Repos
             }
         }
     }
+}
