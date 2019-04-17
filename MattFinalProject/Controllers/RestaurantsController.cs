@@ -13,10 +13,10 @@ namespace MattFinalProject.Controllers
     public class RestaurantsController : Controller
     {
         [HttpGet("")]
-        public ActionResult<ResSummary> Get()
+        public ActionResult<ResList> Get()
         {
-            var restaurantRepo = new RestaurantRepo();
-            return restaurantRepo.GetRestaurants();
+            var resTwoRepo = new ResTwoRepo();
+            return resTwoRepo.GetRestaurants();
         }
     }
 }
