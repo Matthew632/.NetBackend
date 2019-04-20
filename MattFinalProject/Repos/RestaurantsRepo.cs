@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace FinalProject.Repos
 {
-    public class ResTwoRepo
+    public class RestaurantsRepo
 
     {
         public ResList GetRestaurants()
@@ -20,14 +20,14 @@ namespace FinalProject.Repos
                 using (var reader = cmd.ExecuteReader())
                     while (reader.Read())
                     {
-                        res = new ResSummary { restaurant_id = reader.GetInt32(0), name = reader.GetString(1), description = reader.GetString(2), rating = reader.GetInt32(3), photo_url = reader.GetString(4), address = reader.GetString(5), link_to_360 = reader.GetString(6), latitude = reader.GetFloat(7), longitude = reader.GetFloat(8), table_booking = reader.GetValue(9), created_at = reader.GetDateTime(10)  };
+                        res = new ResSummary { restaurant_id = reader.GetInt32(0), name = reader.GetString(1), description = reader.GetString(2), rating = reader.GetInt32(3), photo_url = reader.GetString(4), address = reader.GetString(5), link_to_360 = reader.GetString(6), latitude = reader.GetFloat(7), longitude = reader.GetFloat(8), table_booking = reader.GetValue(9), created_at = reader.GetDateTime(10) };
                         allRes.resList.Insert(counter, res);
                         counter++;
                     }
-                    
-            }
-                return allRes;
 
             }
+            return allRes;
+
         }
     }
+}
