@@ -19,5 +19,13 @@ namespace FinalProject.Controllers
             return restaurantsRepo.GetRestaurants();
         }
 
+        [HttpPost("")]
+        public ActionResult<ResSummary> Post([FromBody]ResPost resPost)
+        {
+            var restaurantsRepo = new RestaurantsRepo();
+            return restaurantsRepo.PostRestaurant(resPost);
+
+        }
+
     }
 }

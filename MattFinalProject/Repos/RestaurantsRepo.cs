@@ -29,5 +29,30 @@ namespace FinalProject.Repos
             return allRes;
 
         }
+        public ResSummary PostRestaurant(ResPost resPost)
+        {
+            string conString = "Host=localhost;username=postgres;password=password;Database=project_db";
+            ResSummary resSummary = null;
+            using (var con = new NpgsqlConnection(conString))
+            {
+                con.Open();
+                using (var cmd = new NpgsqlCommand($"INSERT INTO restaurants (name,description,rating,photo_url,address,link_to_360,latitude,longitude) VALUES (@name,@description,@rating,@photo_url,@address,@link_to_360,@latitude,@longitude)", con))
+                {
+                    cmd.Parameters.AddWithValue("name", resPost.Name);
+                    cmd.Parameters.AddWithValue("description", resPost.Description);
+                    cmd.Parameters.AddWithValue("rating", resPost.Rating);
+                    cmd.Parameters.AddWithValue("photo_url", resPost.Photo_url);
+                    cmd.Parameters.AddWithValue("address", resPost.Address);
+                    cmd.Parameters.AddWithValue("link_to_360", resPost.Link_to_360);
+                    cmd.Parameters.AddWithValue("latitude", resPost.Latitude);
+                    cmd.Parameters.AddWithValue("longitude", resPost.Longitude);
+                    //cmd.Parameters.AddWithValue("table_booking", resPost.Table_booking);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                return resSummary;
+            }
+        }
     }
 }
