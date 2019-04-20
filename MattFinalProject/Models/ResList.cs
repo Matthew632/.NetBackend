@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MattFinalProject.Models
+namespace FinalProject.Models
 {
     public class ResList
     {

@@ -1,11 +1,11 @@
-﻿using MattFinalProject.Models;
+﻿using FinalProject.Models;
 using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MattFinalProject.Repos
+namespace FinalProject.Repos
 {
     public class ImageRepo
     {

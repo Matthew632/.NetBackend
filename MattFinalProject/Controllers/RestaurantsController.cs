@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MattFinalProject.Models;
-using MattFinalProject.Repos;
+using FinalProject.Models;
+using FinalProject.Repos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MattFinalProject.Controllers
+namespace FinalProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

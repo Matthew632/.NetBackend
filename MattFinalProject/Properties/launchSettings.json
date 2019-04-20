@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "MattFinalProject": {
+    "FinalProject": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",
