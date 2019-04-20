@@ -7,10 +7,10 @@ namespace FinalProject.Models
 {
     public class ResList
     {
-        public List<ResSummary> resList { get; set; }
+        public List<ResSummary> restaurants { get; set; }
         public ResList()
         {
-            resList = new List<ResSummary>();
+            restaurants = new List<ResSummary>();
         }
     }
 }
