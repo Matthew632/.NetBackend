@@ -20,7 +20,11 @@ namespace FinalProject.Repos
                 using (var reader = cmd.ExecuteReader())
                     while (reader.Read())
                     {
-                        user = new User { user_id = reader.GetInt32(0), user_name = reader.GetString(1), first_name = reader.GetString(2), last_name = reader.GetString(3), restaurant_name = reader.GetString(4)};
+                        user = new User { user_id = reader.GetInt32(0),
+                            user_name = reader.GetString(1),
+                            first_name = reader.GetStringOrDefault(2),
+                            last_name = reader.GetStringOrDefault(3),
+                            restaurant_name = reader.GetStringOrDefault(4)};
                         allUsers.usersList.Insert(counter, user);
                         counter++;
                     }

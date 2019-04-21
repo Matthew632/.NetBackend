@@ -10,14 +10,13 @@ namespace FinalProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RestaurantController : Controller
+    public class CommunicationController : Controller
     {
-        [HttpGet("{id}")]
-        public ActionResult<ResSummary> Get(int id)
+        [HttpGet("")]
+        public ActionResult<UsersList> Get()
         {
-            var restaurantRepo = new RestaurantRepo();
-            return restaurantRepo.GetRestaurant(id);
+            var usersRepo = new UsersRepo();
+            return usersRepo.GetUsers();
         }
-
     }
 }
