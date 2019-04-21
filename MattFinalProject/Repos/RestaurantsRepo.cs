@@ -55,7 +55,17 @@ namespace FinalProject.Repos
                 using (var cmd = new NpgsqlCommand($"SELECT * FROM restaurants WHERE restaurant_id = {id} ", con))
                 using (var reader = cmd.ExecuteReader())
                     while (reader.Read())
-                        res = new ResSummary { restaurant_id = reader.GetInt32(0), name = reader.GetString(1), description = reader.GetString(2), rating = reader.GetInt32(3), photo_url = reader.GetString(4), address = reader.GetString(5), link_to_360 = reader.GetString(6), latitude = reader.GetFloat(7), longitude = reader.GetFloat(8), table_booking = reader.GetValue(9), created_at = reader.GetDateTime(10) };
+                        res = new ResSummary { restaurant_id = reader.GetInt32(0),
+                            name = reader.GetString(1),
+                            description = reader.GetString(2),
+                            rating = reader.GetIntOrDefault(3),
+                            photo_url = reader.GetStringOrDefault(4),
+                            address = reader.GetStringOrDefault(5),
+                            link_to_360 = reader.GetStringOrDefault(6),
+                            latitude = reader.GetFloatOrDefault(7),
+                            longitude = reader.GetFloatOrDefault(8),
+                            table_booking = reader.GetValue(9),
+                            created_at = reader.GetDateTimeOrDefault(10) };
                 return res;
 
             }
@@ -89,7 +99,17 @@ namespace FinalProject.Repos
                 using (var cmd = new NpgsqlCommand($"SELECT * FROM restaurants WHERE restaurant_id = {id} ", con))
                 using (var reader = cmd.ExecuteReader())
                     while (reader.Read())
-                        resSummary = new ResSummary { restaurant_id = reader.GetInt32(0), name = reader.GetString(1), description = reader.GetString(2), rating = reader.GetInt32(3), photo_url = reader.GetString(4), address = reader.GetString(5), link_to_360 = reader.GetString(6), latitude = reader.GetFloat(7), longitude = reader.GetFloat(8), table_booking = reader.GetValue(9), created_at = reader.GetDateTime(10) };
+                        resSummary = new ResSummary { restaurant_id = reader.GetInt32(0),
+                            name = reader.GetString(1),
+                            description = reader.GetString(2),
+                            rating = reader.GetIntOrDefault(3),
+                            photo_url = reader.GetStringOrDefault(4),
+                            address = reader.GetStringOrDefault(5),
+                            link_to_360 = reader.GetStringOrDefault(6),
+                            latitude = reader.GetFloatOrDefault(7),
+                            longitude = reader.GetFloatOrDefault(8),
+                            table_booking = reader.GetValue(9),
+                            created_at = reader.GetDateTimeOrDefault(10) };
 
             }
 

@@ -34,7 +34,7 @@ namespace FinalProject
 
             });
             services.AddScoped<IRestaurantsRepo, RestaurantsRepo>();
-            services.AddScoped<IUserRepo, UserRepo>();
+            services.AddScoped<IUsersRepo, UsersRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

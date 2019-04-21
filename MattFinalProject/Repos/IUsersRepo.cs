@@ -2,8 +2,10 @@
 
 namespace FinalProject.Repos
 {
-    public interface IUserRepo
+    public interface IUsersRepo
     {
         User GetUser(int id);
+        UsersList GetUsers();
+        User PostUser(UserPost userPost);
     }
 }

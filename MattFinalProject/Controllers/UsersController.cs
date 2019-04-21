@@ -12,18 +12,31 @@ namespace FinalProject.Controllers
     [ApiController]
     public class UsersController : Controller
     {
+        private IUsersRepo usersRepo;
+        public UsersController(IUsersRepo usersRepo)
+        {
+            this.usersRepo = usersRepo;
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<User> Get(int id)
+        {
+                var user = usersRepo.GetUser(id);
+                return user;
+            }
+
         [HttpGet("")]
         public ActionResult<UsersList> Get()
         {
-            var usersRepo = new UsersRepo();
-            return usersRepo.GetUsers();
+            var users = usersRepo.GetUsers();
+            return users;
         }
 
         [HttpPost("")]
         public ActionResult<User> Post([FromBody]UserPost userPost)
         {
-            var usersRepo = new UsersRepo();
-            return usersRepo.PostUser(userPost);
+            var user = usersRepo.PostUser(userPost);
+            return user;
 
         }
 
