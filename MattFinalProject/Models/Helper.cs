@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Models
 {
-    public class Id
+    public class Helper
     {
         public int helper_table_id { get; set; }
         public int patched_id { get; set; }

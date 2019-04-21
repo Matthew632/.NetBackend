@@ -12,33 +12,23 @@ namespace FinalProject.Controllers
     [ApiController]
     public class CommunicationController : Controller
     {
-        private IUsersRepo usersRepo;
-        public CommunicationController(IUsersRepo usersRepo)
+        private ICommunicationRepo communicationRepo;
+        public CommunicationController(ICommunicationRepo communicationRepo)
         {
-            this.usersRepo = usersRepo;
+            this.communicationRepo = communicationRepo;
         }
-
-        [HttpGet("{id}")]
-        public ActionResult<User> Get(int id)
-        {
-                var user = usersRepo.GetUser(id);
-                return user;
-            }
 
         [HttpGet("")]
-        public ActionResult<UsersList> Get()
+        public ActionResult<Helper> Get()
         {
-            var users = usersRepo.GetUsers();
-            return users;
-        }
+                return communicationRepo.GetHelper();
+            }
 
-        [HttpPost("")]
-        public ActionResult<User> Post([FromBody]UserPost userPost)
-        {
-            var user = usersRepo.PostUser(userPost);
-            return user;
-
-        }
-
+        //[HttpPatch("")]
+        //public ActionResult<User> Patch([FromBody]UserPost userPost)
+        //{
+        //    var user = usersRepo.PostUser(userPost);
+        //    return user;
+        //}
     }
 }
