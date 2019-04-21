@@ -1,4 +1,5 @@
 ﻿using FinalProject.Models;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using Npgsql;
 using NpgsqlTypes;
@@ -7,14 +8,16 @@ using System.Collections.Generic;
 namespace FinalProject.Repos
 {
     public class RestaurantsRepo : IRestaurantsRepo
-
     {
-        public ResList GetRestaurants()
+        private string connectionString;
+        public RestaurantsRepo(IConfiguration configuration)
         {
-            string conString = "Host=localhost;username=postgres;password=password;Database=project_db";
-            
+            connectionString = configuration.GetConnectionString("default");
+        }
+        public ResList GetRestaurants()
+        {            
             ResList allRes = new ResList();
-            using (var con = new NpgsqlConnection(conString))
+            using (var con = new NpgsqlConnection(connectionString))
             {
                 con.Open();
                 using (var cmd = new NpgsqlCommand($"SELECT * FROM restaurants", con))
@@ -47,9 +50,8 @@ namespace FinalProject.Repos
 
         public ResSummary GetRestaurant(int id)
         {
-            string conString = "Host=localhost;username=postgres;password=password;Database=project_db";
             ResSummary res = null;
-            using (var con = new NpgsqlConnection(conString))
+            using (var con = new NpgsqlConnection(connectionString))
             {
                 con.Open();
                 using (var cmd = new NpgsqlCommand($"SELECT * FROM restaurants WHERE restaurant_id = {id} ", con))
@@ -75,9 +77,8 @@ namespace FinalProject.Repos
 
         public ResSummary PostRestaurant(ResPost resPost)
         {
-            string conString = "Host=localhost;username=postgres;password=password;Database=project_db";
             ResSummary resSummary = null;
-            using (var con = new NpgsqlConnection(conString))
+            using (var con = new NpgsqlConnection(connectionString))
             {
                 con.Open();
                 int id = -1;
@@ -110,14 +111,11 @@ namespace FinalProject.Repos
                             longitude = reader.GetFloatOrDefault(8),
                             table_booking = reader.GetValue(9),
                             created_at = reader.GetDateTimeOrDefault(10) };
-
             }
 
             return resSummary;
         }
 
-
-        public void TEST() { }
     }
 
 }

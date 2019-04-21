@@ -6,7 +6,6 @@ using System.Collections.Generic;
 namespace FinalProject.Repos
 {
     public class UsersRepo : IUsersRepo
-
     {
         private string connectionString;
         public UsersRepo(IConfiguration configuration)
