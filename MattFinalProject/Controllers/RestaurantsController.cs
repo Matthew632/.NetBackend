@@ -48,9 +48,6 @@ namespace FinalProject.Controllers
 
         [HttpPatch("{id}")]
         public ActionResult<ResSummary> Patch([FromRoute] int id, [FromBody]ResPatch resPatch)
-        { return Ok(); }
-
-
-
+        { return restaurantsRepo.PatchRestaurant(id, resPatch); }
     }
 }

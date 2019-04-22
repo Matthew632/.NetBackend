@@ -1,4 +1,5 @@
-﻿using FinalProject.Models;
+﻿using FinalProject.Controllers;
+using FinalProject.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using Npgsql;
@@ -108,6 +109,36 @@ namespace FinalProject.Repos
                             longitude = reader.GetFloatOrDefault(8),
                             table_booking = reader.GetValue(9),
                             created_at = reader.GetDateTimeOrDefault(10) };
+            }
+            return resSummary;
+        }
+
+        public ResSummary PatchRestaurant(int id, ResPatch resPatch)
+        {
+            ResSummary resSummary = null;
+            using (var con = new NpgsqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var cmd = new NpgsqlCommand($"UPDATE restaurants SET rating = {resPatch.rating} WHERE restaurant_id = {id} RETURNING restaurant_id", con))
+                    id = int.Parse(cmd.ExecuteScalar().ToString());
+                using (var newcmd = new NpgsqlCommand($"SELECT * FROM restaurants WHERE restaurant_id = {id} ", con))
+                using (var reader = newcmd.ExecuteReader())
+                    while (reader.Read())
+                        resSummary = new ResSummary
+                        {
+                            restaurant_id = reader.GetInt32(0),
+                            name = reader.GetString(1),
+                            description = reader.GetString(2),
+                            rating = reader.GetIntOrDefault(3),
+                            photo_url = reader.GetStringOrDefault(4),
+                            address = reader.GetStringOrDefault(5),
+                            link_to_360 = reader.GetStringOrDefault(6),
+                            latitude = reader.GetFloatOrDefault(7),
+                            longitude = reader.GetFloatOrDefault(8),
+                            table_booking = reader.GetValue(9),
+                            created_at = reader.GetDateTimeOrDefault(10)
+                        };
             }
 
             return resSummary;
