@@ -17,6 +17,7 @@ namespace FinalProject.Models
         public float latitude { get; set; }
         public float longitude { get; set; }
         public object table_booking { get; set; }
+        public object pointer_location { get; set; }
         public DateTime created_at {get; set;}
 
     }

@@ -37,7 +37,8 @@ namespace FinalProject.Repos
                             latitude = reader.GetFloatOrDefault(7),
                             longitude = reader.GetFloatOrDefault(8),
                             table_booking = reader.GetStringOrDefault(9),
-                            created_at = reader.GetDateTime(10)
+                            pointer_location = reader.GetStringOrDefault(10),
+                            created_at = reader.GetDateTime(11)
                         };
                         allRes.restaurants.Add(res);
                     }
@@ -67,8 +68,9 @@ namespace FinalProject.Repos
                             link_to_360 = reader.GetStringOrDefault(6),
                             latitude = reader.GetFloatOrDefault(7),
                             longitude = reader.GetFloatOrDefault(8),
-                            table_booking = reader.GetValue(9),
-                            created_at = reader.GetDateTimeOrDefault(10) };
+                            table_booking = reader.GetStringOrDefault(9),
+                            pointer_location = reader.GetStringOrDefault(10),
+                            created_at = reader.GetDateTimeOrDefault(11) };
                 return res;
 
             }
@@ -80,7 +82,7 @@ namespace FinalProject.Repos
             {
                 con.Open();
                 int id = -1;
-                using (var cmd = new NpgsqlCommand($"INSERT INTO restaurants (name,description,rating,photo_url,address,link_to_360,latitude,longitude,table_booking) VALUES (@name,@description,@rating,@photo_url,@address,@link_to_360,@latitude,@longitude,@table_booking) RETURNING restaurant_id", con))
+                using (var cmd = new NpgsqlCommand($"INSERT INTO restaurants (name,description,rating,photo_url,address,link_to_360,latitude,longitude,table_booking,pointer_location) VALUES (@name,@description,@rating,@photo_url,@address,@link_to_360,@latitude,@longitude,@table_booking@,pointer_location) RETURNING restaurant_id", con))
                 {
                     cmd.Parameters.AddWithValue("name", resPost.Name);
                     cmd.Parameters.AddWithValue("description", resPost.Description);
@@ -92,7 +94,8 @@ namespace FinalProject.Repos
                     cmd.Parameters.AddWithValue("longitude", resPost.Longitude);
                     cmd.Parameters.Add(new NpgsqlParameter("table_booking", NpgsqlDbType.Jsonb)
                     { Value = resPost.TableBooking.ToString() });
-
+                    cmd.Parameters.Add(new NpgsqlParameter("pointer_location", NpgsqlDbType.Jsonb)
+                    { Value = resPost.TableBooking.ToString() });
                     id = int.Parse(cmd.ExecuteScalar().ToString());
                 }
                 using (var cmd = new NpgsqlCommand($"SELECT * FROM restaurants WHERE restaurant_id = {id} ", con))
@@ -108,7 +111,8 @@ namespace FinalProject.Repos
                             latitude = reader.GetFloatOrDefault(7),
                             longitude = reader.GetFloatOrDefault(8),
                             table_booking = reader.GetValue(9),
-                            created_at = reader.GetDateTimeOrDefault(10) };
+                            pointer_location = reader.GetValue(10),
+                            created_at = reader.GetDateTimeOrDefault(11) };
             }
             return resSummary;
         }
@@ -137,7 +141,8 @@ namespace FinalProject.Repos
                             latitude = reader.GetFloatOrDefault(7),
                             longitude = reader.GetFloatOrDefault(8),
                             table_booking = reader.GetValue(9),
-                            created_at = reader.GetDateTimeOrDefault(10)
+                            pointer_location = reader.GetValue(10),
+                            created_at = reader.GetDateTimeOrDefault(11)
                         };
             }
 
