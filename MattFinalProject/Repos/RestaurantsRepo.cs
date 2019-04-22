@@ -72,9 +72,6 @@ namespace FinalProject.Repos
 
             }
         }
-
-
-
         public ResSummary PostRestaurant(ResPost resPost)
         {
             ResSummary resSummary = null;

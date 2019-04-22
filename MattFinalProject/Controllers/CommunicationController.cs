@@ -24,11 +24,10 @@ namespace FinalProject.Controllers
                 return communicationRepo.GetHelper();
             }
 
-        //[HttpPatch("")]
-        //public ActionResult<User> Patch([FromBody]UserPost userPost)
-        //{
-        //    var user = usersRepo.PostUser(userPost);
-        //    return user;
-        //}
+        [HttpPatch("")]
+        public ActionResult<Helper> Patch([FromBody]PatchHelper patchHelper)
+        {
+            return communicationRepo.HelperPatch(patchHelper);
+        }
     }
 }
