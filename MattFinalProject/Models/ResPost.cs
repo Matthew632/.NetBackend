@@ -19,7 +19,5 @@ namespace FinalProject.Models
         public string Link_to_360 { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
-        public JObject TableBooking { get; set; }
-        public JObject PointerLocation { get; set; }
     }
 }
