@@ -10,6 +10,6 @@ namespace FinalProject.Models
         public string User_name { get; set; }
         public string First_name { get; set; }
         public string Last_name { get; set; }
-        public string Restaurant_name { get; set; }
+        public int Restaurant_id { get; set; }
     }
 }

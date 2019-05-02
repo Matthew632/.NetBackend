@@ -11,6 +11,6 @@ namespace FinalProject.Models
         public string user_name { get; set; }
         public string first_name { get; set; }
         public string last_name { get; set; }
-        public string restaurant_name { get; set; }
+        public int restaurant_id { get; set; }
     }
 }
