@@ -36,9 +36,7 @@ namespace FinalProject.Repos
                             link_to_360 = reader.GetStringOrDefault(6),
                             latitude = reader.GetFloatOrDefault(7),
                             longitude = reader.GetFloatOrDefault(8),
-                            table_booking = reader.GetStringOrDefault(9),
-                            pointer_location = reader.GetStringOrDefault(10),
-                            created_at = reader.GetDateTime(11)
+                            created_at = reader.GetDateTime(9)
                         };
                         allRes.restaurants.Add(res);
                     }
@@ -68,9 +66,7 @@ namespace FinalProject.Repos
                             link_to_360 = reader.GetStringOrDefault(6),
                             latitude = reader.GetFloatOrDefault(7),
                             longitude = reader.GetFloatOrDefault(8),
-                            table_booking = reader.GetStringOrDefault(9),
-                            pointer_location = reader.GetStringOrDefault(10),
-                            created_at = reader.GetDateTimeOrDefault(11) };
+                            created_at = reader.GetDateTimeOrDefault(9) };
                 return res;
 
             }
@@ -106,9 +102,7 @@ namespace FinalProject.Repos
                             link_to_360 = reader.GetStringOrDefault(6),
                             latitude = reader.GetFloatOrDefault(7),
                             longitude = reader.GetFloatOrDefault(8),
-                            table_booking = reader.GetStringOrDefault(9),
-                            pointer_location = reader.GetStringOrDefault(10),
-                            created_at = reader.GetDateTimeOrDefault(11) };
+                            created_at = reader.GetDateTimeOrDefault(9) };
             }
             return resSummary;
         }
@@ -136,9 +130,7 @@ namespace FinalProject.Repos
                             link_to_360 = reader.GetStringOrDefault(6),
                             latitude = reader.GetFloatOrDefault(7),
                             longitude = reader.GetFloatOrDefault(8),
-                            table_booking = reader.GetValue(9),
-                            pointer_location = reader.GetValue(10),
-                            created_at = reader.GetDateTimeOrDefault(11)
+                            created_at = reader.GetDateTimeOrDefault(9)
                         };
             }
 
