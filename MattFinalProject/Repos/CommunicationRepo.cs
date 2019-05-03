@@ -37,14 +37,30 @@ namespace FinalProject.Repos
                 using (var con = new NpgsqlConnection(connectionString))
                 {
                     con.Open();
-                    using (var cmd = new NpgsqlCommand($"UPDATE helper_table SET patched_id = @patched_id, patched_table_id = @patched_table_id, current_user_id = @current_user_id", con))
+                if (patchHelper.patched_id >= 0)
+                {
+                    using (var cmd = new NpgsqlCommand($"UPDATE helper_table SET patched_id = @patched_id", con))
                     {
                         cmd.Parameters.AddWithValue("patched_id", patchHelper.patched_id);
-                        cmd.Parameters.AddWithValue("patched_table_id", patchHelper.patched_table_id);
-                        cmd.Parameters.AddWithValue("current_user_id", patchHelper.current_user_id);
-
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
                     }
+                }
+                if (patchHelper.patched_table_id >= 0)
+                {
+                    using (var cmd = new NpgsqlCommand($"UPDATE helper_table SET patched_table_id = @patched_table_id", con))
+                    {
+                        cmd.Parameters.AddWithValue("patched_table_id", patchHelper.patched_table_id);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                if (patchHelper.current_user_id >= 0)
+                {
+                    using (var cmd = new NpgsqlCommand($"UPDATE helper_table SET current_user_id = @current_user_id", con))
+                    {
+                        cmd.Parameters.AddWithValue("current_user_id", patchHelper.current_user_id);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
                 using (var cmd = new NpgsqlCommand($"SELECT * FROM helper_table", con))
                 using (var reader = cmd.ExecuteReader())
                     while (reader.Read())
