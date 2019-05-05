@@ -14,7 +14,7 @@ https://www.postgresql.org/download/
 
 In the SQL shell that comes with PostgresSQL create a new database using `CREATE DATABASE your_database_name` and then step into this database using `\c your_database_name`
 
-Run the two files in the DBsetup folder in order, change the below commands to match the directory you have saved the the repository in:
+Run the two files in the DBsetup folder in order, change the below commands to match the directory you have saved the repository in:
 
 ```
 \i C:/Users/Matthew/source/repos/FinalProject/DBsetup/tables.sql
