@@ -30,3 +30,8 @@ Open the FinalProject solution in Visual Studio and in appsettings.Development.j
 ```
 
 Now run the solution in Visual Studio and the swagger user interface should automatically appear in your default browser.
+
+### Hosted Webview
+
+The restaurant's interior is shown through a WebView component within the React native app. This can be found at:
+https://lit-cove-48777.herokuapp.com/index.html
