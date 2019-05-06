@@ -21,7 +21,7 @@ Run the two files in the DBsetup folder in order, change the below commands to m
 
 \i C:/Users/Matthew/source/repos/FinalProject/DBsetup/seed.sql
 ```
-Open the FinalProject solution in Visual Studio and in appsettings.Development.json change the below line to match the configuration of your database.
+Open the FinalProject solution in Visual Studio, install the dependencies via NuGet and then in appsettings.Development.json change the below line to match the configuration of your database.
 
 ```
   "ConnectionStrings": {
