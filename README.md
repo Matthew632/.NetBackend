@@ -33,6 +33,6 @@ Now run the solution in Visual Studio and the swagger user interface should auto
 
 ### Hosted VR View
 
-The restaurant's interior is shown through a WebView component within the React native app, see below.
-*I do not take credit for this:*
+The restaurant's interior is shown through a WebView component within the React native app, see below:<br/>
+*I do not take credit for this*<br/>
 https://lit-cove-48777.herokuapp.com/index.html
